@@ -1,0 +1,115 @@
+﻿@model RecruitmentApp.Models.Appliant
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
+    <meta content="Coderthemes" name="author" />
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="assets/images/favicon.ico">
+
+    <!-- App css -->
+    <link href="~/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/assets/css/app-creative.min.css" rel="stylesheet" type="text/css" id="light-style" />
+    <link href="~/assets/css/app-creative-dark.min.css" rel="stylesheet" type="text/css" id="dark-style" />
+
+</head>
+
+<body class="authentication-bg" data-layout-config='{"darkMode":false}'>
+    <div class="account-pages mt-5 mb-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-5">
+                    <div class="card">
+                        <!-- Logo -->
+                        <div class="card-header pt-4 pb-4 text-center bg-primary">
+                            <a href="index.html">
+                                <span><img src="~/assets/images/logo.png" alt="" height="18"></span>
+                            </a>
+                        </div>
+                        <div class="card-body p-4">
+                            <div class="text-center w-75 m-auto">
+                                <h4 class="text-dark-50 text-center mt-0 font-weight-bold">İş Başvuru Formu</h4>
+                                <h6 class="text-dark-50 text-center mt-0 font-weight-bold">Lütfen aşağıdaki bilgileri doldurunuz.</h6>
+                            </div>
+                            @using (Html.BeginForm("Index", "Appliant", FormMethod.Post))
+                            {
+                                @Html.AntiForgeryToken()
+                                <form>
+
+                                    <div class="form-group">
+                                        <label for="fullname">İsim Soyisim</label>
+                                        <input class="form-control" type="text" id="Name" required="" placeholder="" name="Name">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="emailaddress">E-Posta Adresiniz</label>
+                                        <input class="form-control" type="email" id="EMail" required="" placeholder="" name="Email">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="tc">TC Kimlik</label>
+                                        <input class="form-control" type="text" id="TC" maxlength="11"  placeholder="" name="TC">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="Years">Yaş</label>
+                                        <input class="form-control" type="text" id="Years"  maxlength="2"  required="" placeholder="" name="Years">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="Years">Deneyim Yılı</label>
+                                        <input class="form-control" type="text" id="ExperienceYear" maxlength="2" s required="" placeholder="" name="ExperienceYear">
+                                    </div>
+
+                                    @*<div class="form-group">
+                                        @Html.LabelFor(model => model.FacultyId, "Beceri", htmlAttributes: new { @class = "" })
+                                        <div class="form-group">
+                                            @Html.DropDownList("FacultyId", null, htmlAttributes: new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.FacultyId, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>*@
+
+                                    <div class="form-group">
+                                        <label for="Skill">Teknoloji Kullanım Yüzdesi</label>
+                                        <input class="form-control" type="text" id="Skill" maxlength="2" required=""  placeholder="" name="Skill">
+                                    </div>
+
+                                    <div class="form-group mb-0 text-center">
+                                        <button class="btn btn-primary" type="submit"> Başvur </button>
+                                    </div>
+                                </form>
+                            }
+                        </div> <!-- end card-body -->
+                    </div>
+                    <!-- end card -->
+
+                    <div class="row mt-3">
+                        <div class="col-12 text-center">
+                            <p class="text-muted">Giriş yapmak için : <a href="/Login/Index" class="text-muted ml-1"><b>Giriş Sayfası</b></a></p>
+                        </div> <!-- end col -->
+                    </div>
+                    <!-- end row -->
+
+                </div> <!-- end col -->
+            </div>
+            <!-- end row -->
+        </div>
+        <!-- end container -->
+    </div>
+    <!-- end page -->
+    <!-- bundle -->
+    <script src="~/assets/js/vendor.min.js"></script>
+    <script src="~/assets/js/app.min.js"></script>
+
+</body>
+</html>
+

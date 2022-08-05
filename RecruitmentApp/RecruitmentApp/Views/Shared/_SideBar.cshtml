@@ -1,0 +1,69 @@
+﻿@using RecruitmentApp.Models
+@{
+    //User user = (User)HttpContext.Current.Session["CurrentUser"];
+}
+
+<aside id="sidebar" class="sidebar">
+
+    <ul class="sidebar-nav" id="sidebar-nav">
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="/">
+                <i class="bi bi-grid"></i>
+                <span>Genel Bakış</span>
+            </a>
+        </li><!-- End Dashboard Nav -->
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#katalog-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-layout-text-window-reverse"></i><span>Katalog</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="katalog-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                <li>
+                    <a href="/Product/Index">
+                        <i class="bi bi-circle"></i><span>Ürünler</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/Category/Index">
+                        <i class="bi bi-circle"></i><span>Kategoriler</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/Brand/Index">
+                        <i class="bi bi-circle"></i><span>Markalar</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/Price/Index">
+                        <i class="bi bi-circle"></i><span>Ürün Fiyatları</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+        @if (user.StatusId == 1)
+        {
+            <li class="nav-item">
+                <a class="nav-link collapsed" data-bs-target="#user-nav" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-layout-text-window-reverse"></i><span>Kullanıcılar</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="user-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                    <li>
+                        <a href="/User/Create">
+                            <i class="bi bi-plus"></i><span>Kullanıcı Ekle</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/User">
+                            <i class="bi bi-list"></i><span>Kullanıcı Listesi</span>
+                        </a>
+                    </li>
+                 
+                </ul>
+            </li>
+        }
+
+
+    </ul>
+</aside>

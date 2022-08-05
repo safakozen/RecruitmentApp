@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Recruitment - İş Başvuru Sayfası</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta content="İş başvuru projesi" name="description" />
+        <meta content="Coderthemes" name="Şafak" />
+        <!-- App favicon -->
+        <link rel="shortcut icon" href="../../assets/images/favicon.ico">
+
+        <!-- App css -->
+        <link href="~/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+        <link href="~/assets/css/app-creative.min.css" rel="stylesheet" type="text/css" id="light-style" />
+        <link href="~/assets/css/app-creative-dark.min.css" rel="stylesheet" type="text/css" id="dark-style" />
+
+    </head>
+
+    <body class="authentication-bg" data-layout-config='{"darkMode":false}'>
+
+            @RenderBody()
+            <!-- end page -->
+
+        <footer class="footer footer-alt">
+            @DateTime.Now  © Şafak Özen - Recruitment App
+        </footer>
+
+        <!-- bundle -->
+        <script src="~/assets/js/vendor.min.js"></script>
+        <script src="~/assets/js/app.min.js"></script>
+        
+    </body>
+</html>

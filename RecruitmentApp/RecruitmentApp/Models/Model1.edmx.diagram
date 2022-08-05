@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="24f2bbe6b92b41668416bf612dfde0ef" Name="Diagram1">
+        <EntityTypeShape EntityType="RecruitmentAppModel.Appliant" Width="1.5" PointX="5.25" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="RecruitmentAppModel.Experience" Width="1.5" PointX="0.75" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="RecruitmentAppModel.Faculty" Width="1.5" PointX="7.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="RecruitmentAppModel.Result" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RecruitmentAppModel.Status" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="RecruitmentAppModel.StatusType" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RecruitmentAppModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="RecruitmentAppModel.User" Width="1.5" PointX="5.25" PointY="7.5" IsExpanded="true" />
+        <AssociationConnector Association="RecruitmentAppModel.FK_Appliant_Result1" ManuallyRouted="false" />
+        <AssociationConnector Association="RecruitmentAppModel.FK_Appliant_Status1" ManuallyRouted="false" />
+        <AssociationConnector Association="RecruitmentAppModel.FK_Status_StatusType1" ManuallyRouted="false" />
+        <AssociationConnector Association="RecruitmentAppModel.FK_User_Status1" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

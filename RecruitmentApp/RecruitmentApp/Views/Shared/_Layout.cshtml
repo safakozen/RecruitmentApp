@@ -1,0 +1,116 @@
+﻿@using RecruitmentApp.Models
+
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Recruitment App @ViewBag.Title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
+        <meta content="Coderthemes" name="author" />
+        <link rel="shortcut icon" href="../../assets/images/favicon.ico">
+        <link href="~/assets/css/vendor/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css" />
+        <link href="~/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+        <link href="~/assets/css/app-creative.min.css" rel="stylesheet" type="text/css" id="light-style" />
+        <link href="~/assets/css/app-creative-dark.min.css" rel="stylesheet" type="text/css" id="dark-style" />
+    </head>
+    <body class="loading" data-layout="topnav" data-layout-config='{"layoutBoxed":false,"darkMode":false,"showRightSidebarOnStart": true}'>
+        <div class="wrapper">
+            <div class="content-page">
+                <div class="content">
+                    <div class="navbar-custom topnav-navbar topnav-navbar-dark">
+                        <div class="container-fluid">
+                            <a href="" class="topnav-logo">
+                                <span class="topnav-logo-lg">
+                                    <img src="~/assets/images/logo-light.png" alt="" height="16">
+                                </span>
+                                <span class="topnav-logo-sm">
+                                    <img src="~/assets/images/logo_sm_dark.png" alt="" height="16">
+                                </span>
+                            </a>
+                            <ul class="list-unstyled topbar-right-menu float-right mb-0">
+                                <li class="dropdown notification-list">
+                                    <a class="nav-link dropdown-toggle nav-user arrow-none mr-0" data-toggle="dropdown" id="topbar-userdrop" href="#" role="button" aria-haspopup="true"
+                                        aria-expanded="false">
+                                        <span class="account-user-avatar"> 
+                                            <img src="~/assets/images/users/avatar-1.jpg" alt="user-image" class="rounded-circle">
+                                        </span>
+                                        @{
+                                            var userlogin = Session["userLogin"] as User;
+                                        }
+                                        <span>
+                                            <span class="account-user-name">@userlogin.Name </span>
+                                            <span class="account-position">@userlogin.Status.Name  </span>
+                                        </span>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated topbar-dropdown-menu profile-dropdown" aria-labelledby="topbar-userdrop">
+                                        <a href="/my-profile" class="dropdown-item notify-item">
+                                            <i class="mdi mdi-account-circle mr-1"></i>
+                                            <span>Profile</span>
+                                        </a>
+                                        <a href="/deleted-task" class="dropdown-item notify-item">
+                                            <i class="mdi mdi-lifebuoy mr-1"></i>
+                                            <span>Deleted Tasks</span>
+                                        </a>
+                                        <a href="/log-out" class="dropdown-item notify-item">
+                                            <i class="mdi mdi-logout mr-1"></i>
+                                            <span>Logout</span>
+                                        </a>
+                                    </div>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="topnav shadow-sm">
+                        <div class="container-fluid">
+                            <nav class="navbar navbar-light navbar-expand-lg topnav-menu">
+                                <div class="collapse navbar-collapse" id="topnav-menu-content">
+                                    <ul class="navbar-nav">
+                                        <li class="nav-item dropdown">
+                                            <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-dashboards" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <i class="uil-dashboard mr-1"></i>Başvurular<div class="arrow-down"></div>
+                                            </a>
+                                            <div class="dropdown-menu" aria-labelledby="topnav-dashboards">
+                                                <a href="/Resource/Index" class="dropdown-item">Başvurular</a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                    <div class="container-fluid">
+                        @RenderBody()
+                    </div>
+                </div>
+                <footer class="footer">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <script>document.write(new Date().getFullYear())</script> © Hyper - Coderthemes.com
+                            </div>
+                            <div class="col-md-6">
+                                <div class="text-md-right footer-links d-none d-md-block">
+                                    <a href="javascript: void(0);">About</a>
+                                    <a href="javascript: void(0);">Support</a>
+                                    <a href="javascript: void(0);">Contact Us</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </div>
+        <div class="rightbar-overlay"></div>
+        <script src="~/assets/js/vendor.min.js"></script>
+        <script src="~/assets/js/app.min.js"></script>
+        <script src="~/assets/js/vendor/apexcharts.min.js"></script>
+        <script src="~/assets/js/vendor/jquery-jvectormap-1.2.2.min.js"></script>
+        <script src="~/assets/js/vendor/jquery-jvectormap-world-mill-en.js"></script>
+        <script src="~/assets/js/pages/demo.dashboard.js"></script>
+    </body>
+</html> 
+
+
+

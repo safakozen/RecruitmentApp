@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="RecruitmentAppModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Appliant">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TC" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+    <Property Name="Years" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="Skill" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="ExperienceYear" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="0" />
+    <Property Name="StatusId" Type="Int32" Nullable="false" />
+    <Property Name="ResultsId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Result" Relationship="Self.FK_Appliant_Result1" FromRole="Appliant" ToRole="Result" />
+    <NavigationProperty Name="Status" Relationship="Self.FK_Appliant_Status1" FromRole="Appliant" ToRole="Status" />
+  </EntityType>
+  <EntityType Name="Experience">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Year" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Faculty">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Result">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Appliant" Relationship="Self.FK_Appliant_Result1" FromRole="Result" ToRole="Appliant" />
+  </EntityType>
+  <EntityType Name="Status">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="StatusTypeId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Appliant" Relationship="Self.FK_Appliant_Status1" FromRole="Status" ToRole="Appliant" />
+    <NavigationProperty Name="StatusType" Relationship="Self.FK_Status_StatusType1" FromRole="Status" ToRole="StatusType" />
+    <NavigationProperty Name="User" Relationship="Self.FK_User_Status1" FromRole="Status" ToRole="User" />
+  </EntityType>
+  <EntityType Name="StatusType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="Status" Relationship="Self.FK_Status_StatusType1" FromRole="StatusType" ToRole="Status" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="StatusId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Status" Relationship="Self.FK_User_Status1" FromRole="User" ToRole="Status" />
+  </EntityType>
+  <Association Name="FK_Appliant_Result1">
+    <End Role="Result" Type="Self.Result" Multiplicity="1" />
+    <End Role="Appliant" Type="Self.Appliant" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Result">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Appliant">
+        <PropertyRef Name="ResultsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Appliant_Status1">
+    <End Role="Status" Type="Self.Status" Multiplicity="1" />
+    <End Role="Appliant" Type="Self.Appliant" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Status">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Appliant">
+        <PropertyRef Name="StatusId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Status_StatusType1">
+    <End Role="StatusType" Type="Self.StatusType" Multiplicity="1" />
+    <End Role="Status" Type="Self.Status" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StatusType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Status">
+        <PropertyRef Name="StatusTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_Status1">
+    <End Role="Status" Type="Self.Status" Multiplicity="1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Status">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="StatusId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="RecruitmentAppEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Appliant" EntityType="Self.Appliant" />
+    <EntitySet Name="Experience" EntityType="Self.Experience" />
+    <EntitySet Name="Faculty" EntityType="Self.Faculty" />
+    <EntitySet Name="Result" EntityType="Self.Result" />
+    <EntitySet Name="Status" EntityType="Self.Status" />
+    <EntitySet Name="StatusType" EntityType="Self.StatusType" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="User" EntityType="Self.User" />
+    <AssociationSet Name="FK_Appliant_Result1" Association="Self.FK_Appliant_Result1">
+      <End Role="Result" EntitySet="Result" />
+      <End Role="Appliant" EntitySet="Appliant" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Appliant_Status1" Association="Self.FK_Appliant_Status1">
+      <End Role="Status" EntitySet="Status" />
+      <End Role="Appliant" EntitySet="Appliant" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Status_StatusType1" Association="Self.FK_Status_StatusType1">
+      <End Role="StatusType" EntitySet="StatusType" />
+      <End Role="Status" EntitySet="Status" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_Status1" Association="Self.FK_User_Status1">
+      <End Role="Status" EntitySet="Status" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
